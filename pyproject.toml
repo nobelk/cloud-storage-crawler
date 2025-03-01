@@ -1,0 +1,36 @@
+[project]
+name = "cloudcrawler"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Dr. Nobel Khandaker",email = "nobel@outlook.com"}
+]
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "click (>=8.1.8,<9.0.0)",
+    "mypy (>=1.15.0,<2.0.0)",
+    "isort (>=6.0.1,<7.0.0)",
+    "boto3 (>=1.37.3,<2.0.0)",
+    "asyncio (>=3.4.3,<4.0.0)"
+]
+
+[tool.poetry]
+packages = [{include = "cloudcrawler", from = "src"}]
+
+[tool.mypy]
+pretty = true
+show_error_codes = true
+ignore_missing_imports = true
+no_implicit_optional = true
+warn_redundant_casts = true
+warn_unused_ignores = false
+disable_error_code = [
+    "annotation-unchecked",
+    "import-untyped",
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
