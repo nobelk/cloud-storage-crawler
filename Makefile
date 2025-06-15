@@ -11,7 +11,7 @@ clean:
 	rm -rf *.egg-info
 
 # Build the project
-build: clean lint format sort test
+build: clean lint sort test
 	poetry build
 
 # Run tests
@@ -20,11 +20,7 @@ test:
 
 # Lint code using mypy
 lint:
-	poetry run mypy .
-
-# Format code using black
-format:
-	poetry run black .
+	poetry run flake8 --ignore=E501 src/crawler/*
 
 # Sort imports using isort
 sort:

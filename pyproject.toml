@@ -1,7 +1,7 @@
 [project]
-name = "cloudcrawler"
+name = "cloud-storage-crawler"
 version = "0.1.0"
-description = ""
+description = "A crawler that finds and lists files in cloud storage buckets that meets a specific criteria."
 authors = [
     {name = "Dr. Nobel Khandaker",email = "nobel@outlook.com"}
 ]
@@ -12,11 +12,12 @@ dependencies = [
     "mypy (>=1.15.0,<2.0.0)",
     "isort (>=6.0.1,<7.0.0)",
     "boto3 (>=1.37.3,<2.0.0)",
-    "asyncio (>=3.4.3,<4.0.0)"
+    "asyncio (>=3.4.3,<4.0.0)",
+    "pytest (>=8.4.0,<9.0.0)"
 ]
 
 [tool.poetry]
-packages = [{include = "cloudcrawler", from = "src"}]
+packages = [{include = "crawler", from = "src"}]
 
 [tool.mypy]
 pretty = true
