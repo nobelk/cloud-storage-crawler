@@ -20,7 +20,7 @@ def crawl(start, end, path, bucket, output):
     asyncio.run(crawl_s3_files(bucket, path, start_date, end_date, output))
 
 
-async def crawl_s3_files(bucket_name, prefix, start_date, end_date, output_file):
+async def crawl_s3_files(bucket_name, prefix, start_date, end_date, output_file = None):
     s3 = boto3.client("s3", region_name="us-east-1")
     paginator = s3.get_paginator("list_objects_v2")
     pages = paginator.paginate(Bucket=bucket_name, Prefix=prefix)
@@ -35,9 +35,11 @@ async def crawl_s3_files(bucket_name, prefix, start_date, end_date, output_file)
                         f"Key: {obj['Key']}, Last Modified: {obj['LastModified']}"
                     )
 
-    with open(output_file, "w") as file:
-        for line in output:
-            file.write(line + "\n")
+    if output_file:
+        with open(output_file, "w") as file:
+            for line in output:
+                file.write(line + "\n")
+    return output
 
 
 if __name__ == "__main__":
